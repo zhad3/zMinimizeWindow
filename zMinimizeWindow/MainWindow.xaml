@@ -1,0 +1,42 @@
+﻿<Window x:Class="zMinimizeWindow.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:zMinimizeWindow"
+        mc:Ignorable="d"
+        Title="zMinimizeWindow" Height="200" Width="250" ResizeMode="CanResize" x:Name="MW">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!--<StatusBar VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Height="16">
+                <Label x:Name="statusLabel" Content=" " />
+            </StatusBar>-->
+            <ListView Grid.Row="0" VerticalContentAlignment="Top" VerticalAlignment="Stretch" x:Name="listViewWindows" >
+            <ListView.Resources>
+                <DataTemplate DataType="{x:Type local:ZProcess}">
+                    <StackPanel Orientation="Horizontal" Height="16">
+                        <TextBlock Text="{Binding Name}" />
+                        <TextBlock Text=" [" Foreground="Gray" />
+                        <TextBlock Text="{Binding Handle}" Foreground="Gray"/>
+                        <TextBlock Text="]" Foreground="Gray"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.Resources>
+            </ListView>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="5">
+            <Button Content="Get windows" VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="btnGetWindows" Click="btnGetWindows_Click" />
+            <Button Content="Minimize selected window(s)" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="btnMinimize" Click="btnMinimize_Click" />
+            </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="5">
+            <Button Content="Force Minimize" x:Name="btnForceMinimize" Click="btnForceMinimize_Click"/>
+            <Button Content="Hide Window" x:Name="btnHideWindow" Click="btnHideWindow_Click"/>
+            <Button Content="Still visible?!" x:Name="btnSysHide" Click="btnSysHide_Click"/>
+        </StackPanel>
+        
+    </Grid>
+</Window>
